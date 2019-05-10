@@ -8,7 +8,7 @@ const Test = Game({
     phases: {
       phase1: {
         // Always onTurnBegin() is called, even endPhase() is called in onPhaseBegin()
-        // To call endPhaseIf(), endTurn() or endPhase() must be called
+        // To call endPhaseIf(), endTurn() must be called
         endPhaseIf: G => {
           console.log('phase1 endPhaseIf');
           return Boolean(G.key1);
@@ -17,7 +17,6 @@ const Test = Game({
           console.log('phase1 onPhaseBegin');
           G.key0 = 'value1';
           G.key1 = 'value1';
-          ctx.events.endPhase();
         },
         onPhaseEnd: (G, ctx) => {
           console.log('phase1 onPhaseEnd');
@@ -25,7 +24,7 @@ const Test = Game({
         onTurnBegin: (G, ctx) => {
           console.log('phase1 onTurnBegin');
           console.log(G.key1);
-          // ctx.events.endTurn();
+          ctx.events.endTurn();
         },
         next: 'phase2'
       },
