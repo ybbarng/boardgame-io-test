@@ -33,6 +33,7 @@ const Test = Game({
         // endPhaseIf() is called always
         endPhaseIf: G => {
           console.log('phase2 endPhaseIf');
+          console.log(G.key2);
           return Boolean(G.key2) && false;
         },
         onPhaseBegin: (G, ctx) => {
